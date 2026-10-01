@@ -1,0 +1,53 @@
+---
+layout: default
+---
+{% assign words = content | number_of_words %}
+{% assign minutes = words | times: 1.0 | divided_by: site.words_per_minute | ceil %}
+<article class="post">
+  <header class="post-header">
+    {% if page.tags.size > 0 %}<p class="kicker">{{ page.tags | first }}</p>{% endif %}
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.description %}<p class="post-dek">{{ page.description }}</p>{% endif %}
+    <p class="meta">
+      By {{ page.author | default: site.author }}
+      <span aria-hidden="true">&middot;</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%-d %B %Y' }}</time>
+      <span aria-hidden="true">&middot;</span> {{ minutes }} min read
+    </p>
+  </header>
+
+  {% if page.walk_note %}
+  <aside class="walk-note">
+    <p class="walk-note-label">From the walk</p>
+    <p>{{ page.walk_note }}</p>
+  </aside>
+  {% endif %}
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {% if page.sources %}
+  <section class="sources">
+    <h2>Sources</h2>
+    <ol>
+      {% for s in page.sources %}
+      <li>{% if s.url %}<a href="{{ s.url }}">{{ s.title }}</a>{% else %}{{ s.title }}{% endif %}</li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+
+  {% if page.tags.size > 0 %}
+  <p class="tag-list">
+    {% for tag in page.tags %}
+      <a class="tag" href="{{ '/topics/' | relative_url }}?tag={{ tag | downcase | uri_escape }}">{{ tag }}</a>
+    {% endfor %}
+  </p>
+  {% endif %}
+
+  <nav class="post-nav" aria-label="More essays">
+    {% if page.previous %}<a class="prev" href="{{ page.previous.url | relative_url }}"><span>Previous</span>{{ page.previous.title }}</a>{% endif %}
+    {% if page.next %}<a class="next" href="{{ page.next.url | relative_url }}"><span>Next</span>{{ page.next.title }}</a>{% endif %}
+  </nav>
+</article>
