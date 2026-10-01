@@ -1,0 +1,19 @@
+{% comment %} Chart include. See README.md, section "Adding a chart", for how to use it. {% endcomment %}
+<figure class="chart">
+  {% if include.title %}<figcaption class="chart-title">{{ include.title }}</figcaption>{% endif %}
+  <div class="chart-canvas">
+    <canvas
+      data-chart="{{ include.type | default: 'bar' }}"
+      data-labels="{{ include.labels | escape }}"
+      data-values="{{ include.values }}"
+      data-series="{{ include.series | escape }}"
+      data-values2="{{ include.values2 }}"
+      data-series2="{{ include.series2 | escape }}"
+      data-unit="{{ include.unit | escape }}"
+      data-prefix="{{ include.prefix | escape }}"
+      data-horizontal="{{ include.horizontal }}"
+      role="img"
+      aria-label="{{ include.title | escape }}"></canvas>
+  </div>
+  {% if include.source %}<p class="chart-source">{{ include.source }}</p>{% endif %}
+</figure>

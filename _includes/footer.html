@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-brand">{{ site.title }}</p>
+    <p>{{ site.tagline }}. Written by {{ site.author }}.</p>
+    <p class="footer-links">
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      {% if site.email != "" %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}
+      <span>&copy; {{ site.time | date: '%Y' }}</span>
+    </p>
+  </div>
+</footer>
