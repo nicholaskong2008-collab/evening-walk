@@ -1,0 +1,46 @@
+# ------------------------------------------------------------
+#  Site settings: edit these first
+# ------------------------------------------------------------
+title: The Evening Walk
+tagline: Economics, one walk at a time
+description: >-
+  Every evening my dad and I walk and argue about the week's economic news.
+  This is where I break those stories down to their economic core.
+author: Nicholas Kong
+email: ""                     # optional, shown in the footer if filled in
+
+# If your repo is https://github.com/<you>/<repo>, set baseurl to "/<repo>".
+# If the repo is named <you>.github.io, leave baseurl as "".
+url: "https://nicholaskong2008-collab.github.io"
+baseurl: "/evening-walk"
+
+# How many words a reader gets through per minute (for "x min read")
+words_per_minute: 220
+
+# Links shown in the header, in order
+nav:
+  - title: Essays
+    url: /
+  - title: Topics
+    url: /topics/
+  - title: About
+    url: /about/
+
+# ------------------------------------------------------------
+#  Build settings: you normally won't need to touch these
+# ------------------------------------------------------------
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    disable: true
+permalink: /:year/:month/:title/
+timezone: Asia/Kuala_Lumpur
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

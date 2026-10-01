@@ -1,0 +1,27 @@
+---
+layout: default
+title: Topics
+permalink: /topics/
+description: Browse every essay by topic.
+---
+<section class="topics">
+  <header class="post-header">
+    <h1 class="post-title">Topics</h1>
+    <p class="post-dek">{{ page.description }}</p>
+  </header>
+
+  {% assign tags = site.tags | sort %}
+  <div class="filter" role="group" aria-label="Filter by topic">
+    <button type="button" class="chip" data-filter="all" aria-pressed="true">All <span>{{ site.posts.size }}</span></button>
+    {% for tag in tags %}
+      <button type="button" class="chip" data-filter="{{ tag[0] | downcase }}" aria-pressed="false">{{ tag[0] }} <span>{{ tag[1].size }}</span></button>
+    {% endfor %}
+  </div>
+
+  <div class="card-grid" id="topic-results">
+    {% for post in site.posts %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+  </div>
+  <p class="empty" id="no-results" hidden>No essays on this topic yet.</p>
+</section>

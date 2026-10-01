@@ -1,0 +1,28 @@
+---
+layout: default
+title: Essays
+---
+<section class="intro">
+  <p class="intro-eyebrow">{{ site.tagline }}</p>
+  <p class="intro-text">{{ site.description }}</p>
+</section>
+
+{% assign latest = site.posts | first %}
+{% if latest %}
+<section class="featured" aria-label="Latest essay">
+  {% include post-card.html post=latest featured=true %}
+</section>
+
+<section class="archive" aria-labelledby="archive-heading">
+  <h2 id="archive-heading" class="section-label">More essays</h2>
+  <div class="card-grid">
+    {% for post in site.posts offset: 1 %}
+      {% include post-card.html post=post %}
+    {% else %}
+      <p class="empty">More essays coming soon.</p>
+    {% endfor %}
+  </div>
+</section>
+{% else %}
+<p class="empty">The first essay is on its way.</p>
+{% endif %}
